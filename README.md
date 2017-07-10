@@ -3,7 +3,7 @@
 * **LONGMAN Online Dictionary**
 
 > **cake‧wake**
-`A very easy thing to do, or a very easy victory. [SYN]Piece of cake.`
+> `A very easy thing to do, or a very easy victory. [SYN]Piece of cake.`
 
 ---
 * **Purpose**

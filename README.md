@@ -1,6 +1,11 @@
 # cakewalk
 
-#### LONGMAN Online Dictionary
+## Purpose
+
+This repository is just for testing
+
+---
+## LONGMAN Online Dictionary
 
 **cake‧wake**
 ```
@@ -8,13 +13,8 @@ A very easy thing to do, or a very easy victory. [SYN]Piece of cake.
 ```
 
 ---
-#### Purpose
-
-This repository is just for testing
-
----
-#### Tensorflow test on Ubuntu 16.04
-**OS warning**
+## Tensorflow test on Ubuntu 16.04
+* **OS warning**
 
 The warning message is like below
 ```

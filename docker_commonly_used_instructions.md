@@ -1,17 +1,17 @@
 ##Docker Commands
 
-####1.列出所有執行中的container
+#### 1.列出所有執行中的container
 ```
 docker ps
 ```
 
 ---
-####2.列出被使用過名稱的container
+#### 2.列出被使用過名稱的container
 ```
 docker ps -a
 ```
 ---
-####3.停止特定container
+#### 3.停止特定container
 * 先找出現在有哪些container, 輸入
 ```
 `docker stats`
@@ -26,18 +26,18 @@ CONTAINER           CPU %               MEM USAGE / LIMIT       MEM %           
 docker stop 01f51f8c9f7b
 ```
 ---
-####4.停止所有container
+#### 4.停止所有container
 ```
 docker stop (docker ps -a -q)
 ```
 ---
-####5.移除所有使用名稱的container
+#### 5.移除所有使用名稱的container
 在kill或stop container後要再把名稱移除才可再次重新使用
 ```
 docker rm (docker ps -q -f status=exited)
 ```
 ---
-####6.以名字顯示running中的container
+#### 6.以名字顯示running中的container
 ```
 docker stats $(docker ps --format={{.Names}})
 ```

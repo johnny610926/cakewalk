@@ -27,7 +27,7 @@ sudo apt-get install fcitx-table-cangjie3
 #### Python3
 ```
 sudo apt-get install -y python3-pip python3-setuptools
-sudo -H pip3 install --upgrade pip numpy ipykernel jupyter matplotlib Pillow
+sudo -H pip3 install --upgrade pip numpy scipy sklearn ipykernel jupyter matplotlib Pillow
 ```
 
 #### Tensorflow

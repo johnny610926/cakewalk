@@ -1,7 +1,9 @@
 ### Ubuntu 16.04
 
-**Shorten command line prompt**
+#### Enable 工作區
+系統設定值 -> 外觀 -> 運作方式 -> 勾選 **啟用工作區**
 
+#### Shorten command line prompt
 Edit .bashrc
 ```
 if [ "$color_prompt" = yes ]; then

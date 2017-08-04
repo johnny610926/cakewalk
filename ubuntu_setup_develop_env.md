@@ -91,4 +91,9 @@ download [Visual Studio Code](https://code.visualstudio.com/download)
 sudo dpkg -i code_1.14.2-1500506907_amd64.deb
 ```
 
+#### Slack
+download [Slack](https://slack.com/downloads/linux)
+```
+sudo dpkg -i slack-desktop-2.7.0-amd64.deb
+```
 

@@ -1,6 +1,7 @@
 ### Ubuntu 16.04
 
 **Shorten command line prompt**
+
 Edit .bashrc
 ```
 if [ "$color_prompt" = yes ]; then

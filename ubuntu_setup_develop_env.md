@@ -99,3 +99,7 @@ download [Slack](https://slack.com/downloads/linux)
 sudo dpkg -i slack-desktop-2.7.0-amd64.deb
 ```
 
+### DOCKER-CE
+reference [Docker-CE](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/)
+
+

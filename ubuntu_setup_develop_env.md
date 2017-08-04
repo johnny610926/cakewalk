@@ -1,13 +1,15 @@
 ### Ubuntu 16.04
 
 ** edit .bashrc **
+```
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    ** PS1='\[\033[01;34m\]\W\[\033[00m\]\$ ' **
+    PS1='\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
     # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    ** PS1='\W\$ ' **
+    PS1='\W\$ '
 fi
+```
 
 #### Before doing any installations
 ```
@@ -75,14 +77,14 @@ sudo apt-get install openssh-server
 ```
 
 #### Chrome
-download Chrome desktop
+download [Chrome desktop](https://www.google.com.tw/chrome/browser/desktop/index.html)
 ```
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 ```
 Login google account
 
 #### Visual Studio Code
-download Visual Studio Code
+download [Visual Studio Code](https://code.visualstudio.com/download)
 ```
 sudo dpkg -i code_1.14.2-1500506907_amd64.deb
 ```

@@ -129,3 +129,26 @@ open a terminal and execute the following command
 ```
 timedatectl set-local-rtc 1
 ```
+
+#### Change the GRUB default boot order
+Backup copy of /etc/default/grub and then edit /etc/defalut/grub
+```
+sudo cp /etc/default/grub /etc/default/grub.bak
+sudo gedit /etc/default/grub
+```
+Find the line that contains
+```
+GRUB_DEFAULT=0
+```
+and set it to
+```
+GRUB_DEFAULT=x
+```
+where **x** is the index of grub menu item to which you would like to boot to by default. Note that the menu items are zero-indexed. That means that the first item in the list is 0 and that the 3rd item is actually 2. In my case, Windos10 is 3rd item in the list, the line shall be:
+```
+GRUB_DEFAULT=2
+```
+Then build the updated grub menu:
+```
+sudo update-grub
+```

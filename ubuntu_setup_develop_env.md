@@ -46,7 +46,7 @@ sudo -H pip3 install tensorflow-gpu # Python 3.n; GPU support.
 ```
 sudo apt-get install git
 ```
-** edit ~/.gitconfig **
+**edit ~/.gitconfig**
 ```
 [core]
 	editor = vi

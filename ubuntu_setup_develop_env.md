@@ -123,3 +123,9 @@ enabled=False
 When set to False, xdg-user-dirs-update will
 not change the XDG user dirs configuration.
 If the above doesn't work, you can try edit ~/.config/user-dirs.dirs
+
+#### Make Ubuntu use 'Local' time to solve "Ubuntu/Windows Boot Systems Time Conflicts"
+open a terminal and execute the following command
+```
+timedatectl set-local-rtc 1
+```

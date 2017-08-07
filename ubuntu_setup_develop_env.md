@@ -122,3 +122,4 @@ enabled=False
 ```
 When set to False, xdg-user-dirs-update will
 not change the XDG user dirs configuration.
+If the above doesn't work, you can try edit ~/.config/user-dirs.dirs

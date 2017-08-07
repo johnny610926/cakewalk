@@ -38,7 +38,9 @@ sudo apt-get install python3-pip python3-dev
 sudo -H pip3 install tensorflow
 ```
 Install GPU support version ok but unable to run. ?????
+```
 sudo -H pip3 install tensorflow-gpu # Python 3.n; GPU support.
+```
 
 #### Git
 ```
@@ -50,11 +52,11 @@ sudo apt-get install git
 	editor = vi
 
 [user]
-	name = johnnycc_huang
-	email = johnnycc_huang@compal.com
+	name = xxx
+	email = xxx@xxx.xxx
 
 [credential "https://github.com"]
-	username = johnny610926
+	username = xxx
 
 [color]
 	diff = auto

@@ -99,7 +99,26 @@ download [Slack](https://slack.com/downloads/linux)
 sudo dpkg -i slack-desktop-2.7.0-amd64.deb
 ```
 
-### DOCKER-CE
+#### DOCKER-CE
 reference [Docker-CE](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/)
 
-
+#### Change default directories
+```
+xdg-user-dirs-update --set DESKTOP $HOME/Desktop
+xdg-user-dirs-update --set DOCUMENTS $HOME/Documents
+xdg-user-dirs-update --set DOWNLOAD $HOME/Download
+xdg-user-dirs-update --set MUSIC $HOME/Music
+xdg-user-dirs-update --set PICTURES $HOME/Pictures
+xdg-user-dirs-update --set PUBLICSHARE $HOME/Publicshare
+xdg-user-dirs-update --set TEMPLATES $HOME/Templates
+xdg-user-dirs-update --set VIDEOS $HOME/Videos
+cp /etc/xdg/user-dirs.conf ~/.config/
+```
+xdg-user-dirs-update will resett your configuration at each session start up.
+Consequently, you need to set enabled=False in your user-dirs.conf file instead of enabled=True. Edit ~/.config/user-dirs.conf
+```
+#enabled=True
+enabled=False
+```
+When set to False, xdg-user-dirs-update will
+not change the XDG user dirs configuration.

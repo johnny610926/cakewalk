@@ -152,29 +152,29 @@ Then build the updated grub menu:
 sudo update-grub
 ```
 #### Install NVIDIA requirements to run TensorFlow with GPU support
--You might modify /etc/default/locale, change all lzh_TW to en_US.UTF-8
--Remove incompatible open source nvidia driver from kernel
+- You might modify /etc/default/locale, change all lzh_TW to en_US.UTF-8
+- Remove incompatible open source nvidia driver from kernel
 ```
 $ sudo bash -c "echo -e \"blacklist nouveau\nalias nouveau off\" > /etc/modprobe.d/nvidia.conf"
 $ sudo update-initramfs -u
 $ sudo reboot
 ```
--CTRL+ALT+F1 to enter TTY1
--Stop X-Window
+- CTRL+ALT+F1 to enter TTY1
+- Stop X-Window
 ```
 $ sudo service lightdm stop
 ```
--NVidia 381 driver is incompatible with Ubuntu X session, resulting login failure on GUI IDE. Thus failback to Ubuntu default 375 driver
+- NVidia 381 driver is incompatible with Ubuntu X session, resulting login failure on GUI IDE. Thus failback to Ubuntu default 375 driver
 ```
 $ sudo ubuntu-drivers autoinstall
 $ sudo reboot
 ```
--CTRL+ALT+F1 to enter TTY1 again
--Verify driver installed correctly
+- CTRL+ALT+F1 to enter TTY1 again
+- Verify driver installed correctly
 ```
 $ nvidia-smi
 ```
--Install CUDA driver and its patch
+- Install CUDA driver and its patch
 Note: <br>
 1. Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 375.26? no 
 2. Install the CUDA 8.0 Samples? no
@@ -183,7 +183,7 @@ Note: <br>
 $ sudo sh GPU/cuda_8.0.61_375.26_linux-run
 $ sudo sh GPU/cuda_8.0.61.2_linux-run
 ```
--Add cuda to execution path
+- Add cuda to execution path
 ```
 $ echo "export PATH=\"/usr/local/cuda/bin:\$PATH\"" >> ~/.bashrc
 ```

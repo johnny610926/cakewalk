@@ -183,10 +183,20 @@ Note: <br>
 $ sudo sh GPU/cuda_8.0.61_375.26_linux-run
 $ sudo sh GPU/cuda_8.0.61.2_linux-run
 ```
+- Install CUDNN driver for Neural Network accerlation.
+```
+$ sudo tar zxvf GPU/cudnn-8.0-linux-x64-v5.1.tgz -C /usr/local/
+```
+- Add cuda to library path, so other program can load library correctly
+```
+$ sudo bash -c "echo /usr/local/cuda/lib64/ > /etc/ld.so.conf.d/cuda.conf"
+$ sudo ldconfig
+```
 - Add cuda to execution path
 ```
 $ echo "export PATH=\"/usr/local/cuda/bin:\$PATH\"" >> ~/.bashrc
 ```
+
 #### TensorFlowGPU
 [reference](https://www.tensorflow.org/install/install_linux)
 ```

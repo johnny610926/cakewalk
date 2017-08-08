@@ -26,20 +26,17 @@ sudo apt-get install fcitx-table-cangjie3
 ```
 #### Python3
 ```
-sudo apt-get install -y python3-pip python3-setuptools
-sudo -H pip3 install --upgrade pip numpy scipy sklearn ipykernel jupyter matplotlib Pillow
+sudo apt-get install -y python3 python3-pip python3-setuptools python3-tk
+sudo -H pip3 install --upgrade pip numpy scipy sklearn ipykernel jupyter matplotlib Pillow pandas scikit-learn
 ```
-
-#### Tensorflow
-[reference](https://www.tensorflow.org/install/install_linux)
+Fix pip format error
 ```
-sudo apt-get install libcupti-dev
-sudo apt-get install python3-pip python3-dev
-sudo -H pip3 install tensorflow
+$ mkdir -p ~/.pip && echo -e "[list]\nformat = columns" > ~/.pip/pip.conf
 ```
-Install GPU support version ok but unable to run. ?????
+Install OpenCV
 ```
-sudo -H pip3 install tensorflow-gpu # Python 3.n; GPU support.
+$ sudo apt-get install -y ffmpeg openexr webp
+$ sudo pip3 install https://bazel.blob.core.windows.net/opencv/opencv_python-3.2.0-cp35-cp35m-linux_x86_64.whl
 ```
 
 #### Git
@@ -153,4 +150,56 @@ GRUB_DEFAULT=2
 Then build the updated grub menu:
 ```
 sudo update-grub
+```
+#### Install NVIDIA requirements to run TensorFlow with GPU support
+-You might modify /etc/default/locale, change all lzh_TW to en_US.UTF-8
+-Remove incompatible open source nvidia driver from kernel
+```
+$ sudo bash -c "echo -e \"blacklist nouveau\nalias nouveau off\" > /etc/modprobe.d/nvidia.conf"
+$ sudo update-initramfs -u
+$ sudo reboot
+```
+-CTRL+ALT+F1 to enter TTY1
+-Stop X-Window
+```
+$ sudo service lightdm stop
+```
+-NVidia 381 driver is incompatible with Ubuntu X session, resulting login failure on GUI IDE. Thus failback to Ubuntu default 375 driver
+```
+$ sudo ubuntu-drivers autoinstall
+$ sudo reboot
+```
+-CTRL+ALT+F1 to enter TTY1 again
+-Verify driver installed correctly
+```
+$ nvidia-smi
+```
+-Install CUDA driver and its patch
+Note: <br>
+1. Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 375.26? no 
+2. Install the CUDA 8.0 Samples? no
+3. Yes to other options
+```
+$ sudo sh GPU/cuda_8.0.61_375.26_linux-run
+$ sudo sh GPU/cuda_8.0.61.2_linux-run
+```
+-Add cuda to execution path
+```
+$ echo "export PATH=\"/usr/local/cuda/bin:\$PATH\"" >> ~/.bashrc
+```
+#### TensorFlowGPU
+[reference](https://www.tensorflow.org/install/install_linux)
+```
+sudo apt-get install libcupti-dev
+sudo apt-get install python3-pip python3-dev
+sudo -H pip3 install tensorflow-gpu
+```
+Test if everything works fine, launch python with below scripts
+```
+import numpy as np
+import cv2
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+print(sess.run(hello))
 ```

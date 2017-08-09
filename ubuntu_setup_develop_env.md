@@ -20,9 +20,10 @@ fi
 sudo apt-get update
 ```
 
-#### 倉頡輸入法
+#### 輸入法
 ```
-sudo apt-get install fcitx-table-cangjie3
+sudo apt-get install fcitx-chewing  #新酷音
+sudo apt-get install fcitx-table-cangjie3 #倉頡第三代
 ```
 #### Python3
 ```

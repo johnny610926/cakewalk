@@ -31,12 +31,12 @@
         ```
     * Python modules
         ```
-        pip3 install --upgrade pip numpy scipy sklearn ipykernel jupyter matplotlib Pillow pandas scikit-learn
+        pip3 install --upgrade pip3 numpy scipy sklearn ipykernel jupyter matplotlib Pillow pandas scikit-learn seaborn
         ```
 
 - Tensorflow
     ```
-    $ pip install --upgrade https://bazel.blob.core.windows.net/tensorflow/tensorflow-1.2.1-cp35-cp35m-macosx_10_12_x86_64.whl
+    $ pip3 install --upgrade https://bazel.blob.core.windows.net/tensorflow/tensorflow-1.2.1-cp35-cp35m-macosx_10_12_x86_64.whl
     ```
 
 - OpenCV Python binding

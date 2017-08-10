@@ -31,7 +31,7 @@
         ```
     * Python modules
         ```
-        pip3 install --upgrade pip3 numpy scipy sklearn ipykernel jupyter matplotlib Pillow pandas scikit-learn seaborn
+        pip3 install --upgrade pip3 numpy scipy sklearn ipykernel jupyter matplotlib Pillow pandas scikit-learn seaborn statsmodels
         ```
 
 - Tensorflow

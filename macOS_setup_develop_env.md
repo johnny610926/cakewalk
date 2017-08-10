@@ -32,6 +32,8 @@
     * Python modules
         ```
         pip3 install --upgrade pip3 numpy scipy sklearn ipykernel jupyter matplotlib Pillow pandas scikit-learn seaborn statsmodels
+        $ brew install gcc@5
+        $ pip3 install xgboost
         ```
 
 - Tensorflow

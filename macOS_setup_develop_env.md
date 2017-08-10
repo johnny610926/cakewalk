@@ -1,17 +1,17 @@
 ### macOS
 
 - Change X-terminal color
-Edit ~/.bash_profile and add the following code.
-```
-export CLICOLOR=1
-export LSCOLORS=gxbxcxdxexegedabagaced
-```
+    Edit ~/.bash_profile and add the following code.
+    ```
+    export CLICOLOR=1
+    export LSCOLORS=gxbxcxdxexegedabagaced
+    ```
 
 - Homebrew
-[Homebrew](https://brew.sh/) is the missing package manager for macOS. It can install the stuff you need that Apple didn’t.
-```
-$ sudo ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+    [Homebrew](https://brew.sh/) is the missing package manager for macOS. It can install the stuff you need that Apple didn’t.
+    ```
+    $ sudo ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ```
 
 - Pythone
     * [Pyenv](https://github.com/pyenv/pyenv)

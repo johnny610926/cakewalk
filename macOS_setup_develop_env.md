@@ -5,7 +5,7 @@
     ```
     export CLICOLOR=1
     export LSCOLORS=gxbxcxdxexegedabagaced
-    export PS1='\[\033[01;34m\]\W\[\033[00m\]\$ '
+    export PS1='\[\e[0;34m\]\w\[\e[0m\]\$ '
     ```
 
 - Homebrew

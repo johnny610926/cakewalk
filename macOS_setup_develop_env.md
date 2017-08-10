@@ -47,3 +47,16 @@
         ```
         pip install https://bazel.blob.core.windows.net/opencv/opencv_python-3.2.0-cp35-cp35m-macosx_10_12_x86_64.whl
         ```
+
+- Git
+    ```
+    brew install git
+    ```
+    Edit ~/.bash_profile and add the following code
+    ```
+    export PATH=/usr/local/bin:$PATH
+    ```
+    Check the version
+    ```
+    git --version
+    ```

@@ -1,10 +1,11 @@
 ### macOS
 
-- Change X-terminal color
+- Change X-terminal color and shorten command line prompt
     Edit ~/.bash_profile and add the following code.
     ```
     export CLICOLOR=1
     export LSCOLORS=gxbxcxdxexegedabagaced
+    export PS1='\[\033[01;34m\]\W\[\033[00m\]\$ '
     ```
 
 - Homebrew

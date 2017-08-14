@@ -39,7 +39,16 @@ Install OpenCV
 $ sudo apt-get install -y ffmpeg openexr webp
 $ sudo pip3 install https://bazel.blob.core.windows.net/opencv/opencv_python-3.2.0-cp35-cp35m-linux_x86_64.whl
 ```
-
+Config Jupyter NotebookApp.iopub_data_rate_limit
+    To create a jupyter_notebook_config.py file, with all the defaults commented out, you can use the following command line:
+    ```
+    $ jupyter notebook --generate-config
+    ```
+    It will generate default config to ~/.juptyer/jupyter_notebook_config.py
+    Edit jupyter_notebook_config.py to change c.NotebookApp.iopub_data_rate_limit as below
+    ```
+    c.NotebookApp.iopub_data_rate_limit = 10000000 # original is 1000000
+    ```
 #### Git
 ```
 sudo apt-get install git

@@ -68,7 +68,7 @@ sudo apt-get install git
 [merge]
 	tool = meld
 ```
-**Append blow code to ~/.config/git/ignore**
+**Append below code to ~/.config/git/ignore**
 ```
 .ipynb_checkpoints
 ```

@@ -44,7 +44,7 @@ $ sudo pip3 install https://bazel.blob.core.windows.net/opencv/opencv_python-3.2
 ```
 sudo apt-get install git
 ```
-**edit ~/.gitconfig**
+**Edit ~/.gitconfig**
 ```
 [core]
 	editor = vi
@@ -67,6 +67,10 @@ sudo apt-get install git
 
 [merge]
 	tool = meld
+```
+**Append blow code to ~/.config/git/ignore**
+```
+.ipynb_checkpoints
 ```
 
 #### Support exfat filesystem type

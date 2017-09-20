@@ -28,14 +28,14 @@ def f1_score(y_true, y_pred):
 
 def precision(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-    predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+    predicted_positives = K.sum(K.clip(y_pred, 0, 1))
 
     _precision = true_positives / (predicted_positives + K.epsilon())
     return _precision
 
 def recall(y_true, y_pred):
     true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-    possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+    possible_positives = K.sum(K.clip(y_true, 0, 1))
 
     _recall = true_positives / (possible_positives + K.epsilon())
     return _recall
@@ -72,14 +72,14 @@ def create_dataset(trainX, trainY, n_of_frames, look_back, diff_halfwave=False):
     return np.array(_trainX), np.array(_trainY)
 
 parser = argparse.ArgumentParser()
-#x431x128_y40x431
-parser.add_argument('--datadir', type=str, default='./dataset/mirex_beat_tracking_2016/train/x862x128_y862x1/', help='train data path')
+#x862x128_y862x1_39th
+parser.add_argument('--datadir', type=str, default='./dataset/mirex_beat_tracking_2016/train/x862x128_y862x1_39th/', help='train data path')
 parser.add_argument('--logdir', type=str, default='./dataset/log', help='Tensorboard log path')
 parser.add_argument('--wtdir', type=str, default='./dataset/log/models', help='Weights checkpoint log path')
 parser.add_argument('--epochs', type=int, default=500, help='the number of times to iterate over the training data')
 parser.add_argument('-lr', type=lambda lr_str: [int(lr) for lr in lr_str.split(',')],
     default=[0.001, 0.0001, 0.00001, 0.000001], help='learning rate')
-parser.add_argument('--look_back', type=int, default=20, help='look back the number of frame to predict the beat. This value will be assigned to "time_steps"')
+parser.add_argument('--look_back', type=int, default=60, help='look back the number of frame to predict the beat. This value will be assigned to "time_steps"')
 args = parser.parse_args()
 trainXY_path = args.datadir
 tb_logdir = args.logdir
@@ -89,7 +89,9 @@ learning_rates = args.lr
 look_back_frames = args.look_back
 
 trainX, trainY, n_of_frames, n_of_freq_bins = load_trainXY(trainXY_path)
+print('beat frame = %f%%' % (np.count_nonzero(trainY)/len(trainY)))
 #print(str(trainX.shape) +', '+ str(trainY.shape) +', '+ str(n_of_frames) +', '+ str(n_of_freq_bins))
+#print(trainY)
 
 trainX, trainY = create_dataset(trainX, trainY, n_of_frames, look_back_frames, diff_halfwave=True)
 #print(str(trainX.shape) +', '+ str(trainY.shape))
@@ -99,11 +101,11 @@ x_val, y_val = trainX[n_of_frames * 16:, :, :], trainY[n_of_frames * 16:]
 x_train, y_train = trainX[:n_of_frames * 16, :, :], trainY[:n_of_frames * 16]
 
 loss_function = 'binary_crossentropy'
-for lr in learning_rates:
+for lr in [0.000001]:
     model = Sequential()
     # build a LSTM RNN
     model.add(LSTM(
-        units=128,
+        units=60,
         batch_input_shape=(n_of_frames, look_back_frames, n_of_freq_bins),
         activation='tanh', #'relu',
         recurrent_activation='hard_sigmoid', #'relu',
@@ -112,22 +114,31 @@ for lr in learning_rates:
         stateful=True,              # True: the final state of batch1 is feed into the initial state of batch2
     ))
     model.add(Dropout(0.3))
-    model.add(LSTM(40, return_sequences=False, stateful=True))
+    model.add(LSTM(60, return_sequences=True, stateful=True))
+    model.add(Dropout(0.3))
+    model.add(LSTM(60, return_sequences=False, stateful=True))
     model.add(Dropout(0.3))
     model.add(Dense(1, activation='hard_sigmoid'))
-    #optimizer = RMSprop(lr=lr)
-    optimizer = Adam(lr=lr, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
+    optimizer = RMSprop(lr=lr)
+    #optimizer = Adam(lr=lr, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
     model.compile(loss=loss_function, optimizer=optimizer, metrics=['accuracy', recall, precision])
 
-    tb_logpath = tb_logdir + '/tanh_adam_lr_%f' % (lr)
+    tb_logpath = tb_logdir + '/tanh_rmsprop_lr_%f' % (lr)
     tb = keras.callbacks.TensorBoard(log_dir=tb_logpath, histogram_freq=0, write_graph=True, write_images=True)
-    wt_logpath = wt_logdir + '/model_lr_%f.hdf5' % (lr)
-    ch_pt = ModelCheckpoint(filepath=wt_logpath, monitor='val_loss', verbose=0, save_best_only=True, save_weights_only=False)
+    #wt_logpath = wt_logdir + '/model_lr_%f.hdf5' % (lr)
+    #ch_pt = ModelCheckpoint(filepath=wt_logpath, monitor='val_loss', verbose=0, save_best_only=True, save_weights_only=False)
     model.fit(x_train, y_train,
         batch_size=n_of_frames,
-        epochs=epochs,
+        epochs=1000,
         validation_data=(x_val, y_val),
         shuffle=False,
         verbose=0,
-        callbacks=[tb, ch_pt])
+        callbacks=[tb])
+        #callbacks=[tb, ch_pt])
     #model.reset_states()
+'''
+    x_pred = x_val[n_of_frames * 2: n_of_frames * 3, :, :]
+    y_pred = model.predict(x_pred, batch_size=n_of_frames, verbose=0)
+    print(y_pred)
+    print(y_val[n_of_frames * 2: n_of_frames * 3])
+'''
